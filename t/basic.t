@@ -4,6 +4,7 @@ use lib "$Bin/lib";
 use Test::Most;
 use MyApp;
 use Catalyst::Test 'MyApp';
+use File::Spec;
 
 sub fileat {
   return  MyApp->config->{root}->file(@_);
@@ -23,7 +24,7 @@ sub fileat {
   is $c->model('Path')->path_from, fileat 'example/foo.html';
 
   $c->stash(path_from=>'/foo');
-  is $c->model('Path')->path_from,  '/foo.html';
+  is $c->model('Path')->path_from,  File::Spec->catfile('/', 'foo.html');
 
   $c->stash(path_from=>':actionname/foo');
   is $c->model('Path')->path_from, fileat 'test/foo.html';

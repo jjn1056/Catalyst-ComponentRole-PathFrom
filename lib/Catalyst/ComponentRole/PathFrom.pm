@@ -1,6 +1,6 @@
 package Catalyst::ComponentRole::PathFrom;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use File::Spec;
 use Moose::Role;
